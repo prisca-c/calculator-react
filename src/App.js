@@ -19,7 +19,7 @@ function App() {
     } else if (operator !== "" && secondNumber !== "" && result === null) {
       setScreenResult(intSecondNumber);
     } else if (result !== null){
-      setScreenResult(result)
+      setScreenResult(result.toFixed(10))
     }
 
     setIntFirstNumber(parseFloat(firstNumber));
