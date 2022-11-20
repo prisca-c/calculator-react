@@ -37,7 +37,7 @@ function App() {
       setIntSecondNumber(null);
       setOperator("");
     }
-    else if (buttonName === "x" || buttonName === "+" || buttonName === "-" || buttonName === "/" || buttonName === "%") {
+    else if (buttonName === "x" || buttonName === "+" || buttonName === "-" || buttonName === "/") {
       setOperator(buttonName);
     }
     else if (buttonName === "=") {
@@ -61,25 +61,13 @@ function App() {
           setResult(intFirstNumber / intSecondNumber);
         }
       }
-      else if (operator === "%") {
-        if(intFirstNumber !== null && intSecondNumber !== null){
-          setResult(intFirstNumber % intSecondNumber);
-        }
-      }
     }
     else if (buttonName === "+/-") {
-      if(intFirstNumber !== null && operator === ""){
-        if(intFirstNumber > 0){
-          setIntFirstNumber(-intFirstNumber);
-        } else if (intFirstNumber < 0){
-          setIntFirstNumber(intFirstNumber * -1);
-        }
-      } else if (intFirstNumber !== null && operator !== ""){
-        if(intSecondNumber > 0){
-          setIntSecondNumber(-intSecondNumber);
-        } else if (intSecondNumber < 0){
-          setIntSecondNumber(intSecondNumber * -1);
-        }
+      if (operator === "") {
+          setFirstNumber((parseFloat(firstNumber) * -1).toString());
+      }
+      else if (secondNumber !== "") {
+          setSecondNumber((parseFloat(secondNumber) * -1).toString())
       }
     }
     else if (buttonName === ".") {
@@ -95,6 +83,11 @@ function App() {
         } else {
           setSecondNumber(secondNumber + buttonName);
         }
+      }
+    }
+    else if (buttonName === "%") {
+      if (secondNumber !== "") {
+          setIntSecondNumber(intFirstNumber * (intSecondNumber / 100));
       }
     }
     else if (parseInt(buttonName) >= 0 && parseInt(buttonName) <= 9) {
